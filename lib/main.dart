@@ -54,7 +54,7 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings) {
       });
     default:
       return MaterialPageRoute(builder: (BuildContext context) {
-        return Home();
+        return Login();
       });
   }
 }
