@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rest/constants.dart';
 import 'package:rest/models/product.dart';
+import 'package:rest/widgets/cart_app_bar.dart';
 import 'package:rest/widgets/main_app_bar.dart';
 import 'package:rest/widgets/meal_detail_footer.dart';
 import 'package:rest/widgets/meal_detail_image.dart';
@@ -49,7 +50,7 @@ class _WatchDetailsState extends State<WatchDetails> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        MainAppBar(),
+                        CartAppBar(),
                         SizedBox(
                           height: 30.0,
                         ),

@@ -160,7 +160,7 @@ class _LoginState extends State<Login> {
                               MaterialPageRoute(builder: (context) => Store()));
                         },
                         //onLongPress: () {},
-                        child: new Text("Go to Store",
+                        child: new Text("Access as a Guest",
                             style: TextStyle(
                                 color: Color.fromRGBO(143, 148, 251, 1))),
                       )
