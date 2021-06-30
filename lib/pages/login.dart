@@ -16,6 +16,16 @@ class _LoginState extends State<Login> {
   String _email, _password;
   FirebaseAuth auth = FirebaseAuth.instance;
 
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,31 +78,32 @@ class _LoginState extends State<Login> {
                             child: Column(
                               children: <Widget>[
                                 TextField(
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "default@email.com",
-                                        hintStyle:
-                                            TextStyle(color: Colors.grey[400])),
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _email = value.trim();
-                                      });
-                                    },
-                                  ),
-
+                                  controller: emailController,
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "default@email.com",
+                                      hintStyle:
+                                          TextStyle(color: Colors.grey[400])),
+                                  // onChanged: (value) {
+                                  //   setState(() {
+                                  //     _email = value.trim();
+                                  //   });
+                                  // },
+                                ),
                                 Container(
                                   padding: EdgeInsets.all(8.0),
                                   child: TextField(
+                                    controller: passwordController,
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
                                         hintText: 'SomePassword',
                                         hintStyle:
                                             TextStyle(color: Colors.grey[400])),
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _password = value.trim();
-                                      });
-                                    },
+                                    // onChanged: (value) {
+                                    //   setState(() {
+                                    //     _password = value.trim();
+                                    //   });
+                                    // },
                                   ),
                                 )
                               ],
@@ -109,7 +120,13 @@ class _LoginState extends State<Login> {
                               color: Color.fromRGBO(143, 148, 251, 1),
                               child: Text('SignIn',
                                   style: TextStyle(color: Colors.white)),
-                              onPressed:()=> _signin()
+                              onPressed: () {
+                                setState(() {
+                                  _email = emailController.text;
+                                  _password = passwordController.text;
+                                });
+                                _signin();
+                              }
                               // onPressed: () {
                               //   _signin(_email, _password);
                               //   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Store()));
@@ -173,31 +190,28 @@ class _LoginState extends State<Login> {
     }
   }
 
-  _signin () async {
+  _signin() async {
     try {
-      UserCredential userCredential = await auth
-          .signInWithEmailAndPassword(
-              email: "default@email.com", password: "SomePassword");     
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: _email, password: _password);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
-      }
-      else if (e.code == 'user-disabled') {
+      } else if (e.code == 'user-disabled') {
         print('User disbaled by Admin');
       }
     }
 
-  auth
-  .authStateChanges()
-  .listen((User user) {
-    if (user == null) {
-      print('User is currently signed out!');
-    } else {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Store()));
-    }
-  });
+    auth.authStateChanges().listen((User user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (context) => Store()));
+      }
+    });
     //return Store();
   }
 }
