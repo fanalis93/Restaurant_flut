@@ -8,7 +8,7 @@ import 'package:rest/pages/meal_details.dart';
 import 'package:rest/firestore.dart';
 
 void main() {
-  runApp(SomeError());
+  runApp(InitFirebase());
 }
 
 class MyApp extends StatelessWidget {

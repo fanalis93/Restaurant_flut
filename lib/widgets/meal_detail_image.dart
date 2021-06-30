@@ -21,7 +21,7 @@ class WatchDetailImage extends StatelessWidget {
             // ),
             image: DecorationImage(
             alignment: Alignment(-.2, 0),
-            image: AssetImage(this.image),
+            image: NetworkImage(this.image),
             fit: BoxFit.cover),
           ),
         ),

@@ -5,50 +5,11 @@ import 'package:rest/models/product.dart';
 import 'package:rest/pages/meal_details.dart';
 //import 'package:rest/widgets/home_options.dart';
 import 'package:rest/widgets/main_app_bar.dart';
+import 'package:rest/firestore.dart';
 
 class Store extends StatelessWidget {
-  final List<Product> menu = [
-    Product(
-      name: "Lamb Soup",
-      image: "assets/images/food-1.jpg",
-      price: 24.00,
-      category: "Main Course",
-      description:
-          "Generous portioin of lamb meat cooked for in a blend of spices until it becomes tender. Served with bread.",
-    ),
-    Product(
-      name: "Salad",
-      image: "assets/images/food-2.jpg",
-      price: 15.00,
-      category: "Main Course",
-      description:
-          "Healthy Salad made from freshly sourced vegetables, drizzled with olive oil. Served with seasame breads.",
-    ),
-    Product(
-      name: "Falafel",
-      image: "assets/images/food-3.jpg",
-      price: 10.99,
-      category: "Appetizer",
-      description:
-          "Serving of smoking hot deep fried falafels. Comes with dipping sauce.",
-    ),
-    Product(
-      name: "Moutabal",
-      image: "assets/images/food-4.jpg",
-      price: 8.00,
-      category: "Side Dish",
-      description:
-          "Freshly made. Perfect dipping for your breads.",
-    ),
-    Product(
-      name: "Samosa",
-      image: "assets/images/food-5.jpg",
-      price: 10.99,
-      category: "Appetizer",
-      description:
-          "Assortment of delicious fried samosas.Comes with dippping sauce.",
-    ),
-  ];
+  final List<Product> menu = menuList;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,10 +53,11 @@ class Store extends StatelessWidget {
                   child: GridView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 10.0,
-                    crossAxisSpacing: 10.0,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10.0,
+                      crossAxisSpacing: 10.0,
                     ),
                     itemCount: menu.length,
                     itemBuilder: (BuildContext context, int index) => ZoomIn(
@@ -107,7 +69,7 @@ class Store extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (BuildContext context) {
                                   return WatchDetails(
-                                    meal: this.menu[index],
+                                    meal: menu[index],
                                     tag: "watch-$index",
                                   );
                                 },
@@ -120,14 +82,13 @@ class Store extends StatelessWidget {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(8.0),
                               image: DecorationImage(
-                                image: AssetImage(menu[index].image),
-                                fit: BoxFit.cover),
+                                  image: NetworkImage(menu[index].image),
+                                  fit: BoxFit.cover),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                            
                                 Text(
                                   menu[index].name,
                                   textAlign: TextAlign.start,
@@ -135,10 +96,9 @@ class Store extends StatelessWidget {
                                     fontSize: 15.0,
                                     color: Colors.white,
                                     background: Paint()
-                                    ..color = Colors.black87
-                                    ..strokeWidth = 18.5
-                                    ..style = PaintingStyle.stroke,       
-                                    
+                                      ..color = Colors.black87
+                                      ..strokeWidth = 18.5
+                                      ..style = PaintingStyle.stroke,
                                   ),
                                 ),
                                 SizedBox(

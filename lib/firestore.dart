@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:rest/main.dart';
 import 'dart:core';
 
+List<Product> menuList = [];
+
 /// We are using a StatefulWidget such that we only create the [Future] once,
 /// no matter how many times our widget rebuild.
 /// If we used a [StatelessWidget], in the event where [App] is rebuilt, that
@@ -34,49 +36,50 @@ class _AppState extends State<InitFirebase> {
 
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return GetMeals("001");
+          return GetMeals();
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return Text("loading");
+        return MaterialApp(
+      title: 'Welcome to Flutter',
+      home: Scaffold(
+        // appBar: AppBar(
+        //   title: const Text('Welcome to Flutter'),
+        // ),
+        body: Center(
+          child: Text("Loading"),
+        ),
+      ),
+    );;
       },
     );
   }
 }
 
 class GetMeals extends StatelessWidget {
-  final String documentId;
+  //final String documentId;
 
-  GetMeals(this.documentId);
+  //GetMeals(this.documentId);
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('meals');
+    CollectionReference meals = FirebaseFirestore.instance.collection('meals');
 
-    return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(documentId).get(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-
-        if (snapshot.hasError) {
-          return Text("Something went wrong");
-        }
-
-        if (snapshot.hasData && !snapshot.data.exists) {
-          return Text("Document does not exist");
-        }
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data = snapshot.data.data() as Map<String, dynamic>;
-          return Text("name: ${data['name']}");
-        }
-
-        return Text("loading");
-      },
-    );
+    meals.get().then((querySnapshot) {
+      querySnapshot.docs.forEach((element) {
+        Product newProduct = new Product(
+            name: element['name'],
+            image: element['image'],
+            price: element['price'],
+            category: element['category'],
+            description: element['description']);
+        menuList.add(newProduct);
+        print(newProduct.name);
+      });
+    });
+    return MyApp();
   }
 }
-
 
 class SomeError extends StatelessWidget {
   @override
@@ -94,5 +97,3 @@ class SomeError extends StatelessWidget {
     );
   }
 }
-
-

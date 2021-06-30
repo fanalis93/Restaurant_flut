@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-  static const Color primaryColor = Color.fromRGBO(224, 177, 121, 1);
+  static const Color primaryColor = Color.fromRGBO(158, 173, 200, 1);
 }
