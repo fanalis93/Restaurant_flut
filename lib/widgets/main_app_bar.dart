@@ -13,8 +13,9 @@ class MainAppBar extends StatelessWidget {
         IconButton(
           icon: Icon(Icons.backspace_outlined),
           onPressed: () {
+            _signout(auth);
             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
-            auth.signOut();
+            
           },
         ),
         IconButton(
@@ -23,5 +24,10 @@ class MainAppBar extends StatelessWidget {
         )
       ],
     );
+  }
+
+  _signout(auth) async{
+    await auth.signOut();
+    //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
   }
 }
