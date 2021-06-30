@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "823076314762",
-    "project_id": "restaurant-flut",
-    "storage_bucket": "restaurant-flut.appspot.com"
+    "project_number": "665546474843",
+    "project_id": "mad-restaurent",
+    "storage_bucket": "mad-restaurent.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:823076314762:android:8d53a225a3e1f4eb07d773",
+        "mobilesdk_app_id": "1:665546474843:android:47d9538b68f5feb6f0067e",
         "android_client_info": {
           "package_name": "com.example.rest"
         }
       },
       "oauth_client": [
         {
-          "client_id": "823076314762-21pmsvrta3pokhb6sbjqg6bddctj745m.apps.googleusercontent.com",
+          "client_id": "665546474843-s9hbjchap61oe67hrb5sclfotg8lnack.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rest",
+            "certificate_hash": "a1693a3996471f6afb3755109ec7168d8dc61247"
+          }
+        },
+        {
+          "client_id": "665546474843-ns8ndbn2c9ukpvmcsli38m11a02irtia.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAmWwtSWB-Z8z1n_KzQok5Y-6jghCQeMfY"
+          "current_key": "AIzaSyBRoHHxKOWhHgYpW2OBGsepoD1y2fhEv_M"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "823076314762-21pmsvrta3pokhb6sbjqg6bddctj745m.apps.googleusercontent.com",
+              "client_id": "665546474843-ns8ndbn2c9ukpvmcsli38m11a02irtia.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

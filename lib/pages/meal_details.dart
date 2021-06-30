@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:rest/constants.dart';
 import 'package:rest/models/product.dart';
 import 'package:rest/widgets/main_app_bar.dart';
-import 'package:rest/widgets/watch_detail_footer.dart';
-import 'package:rest/widgets/watch_detail_image.dart';
+import 'package:rest/widgets/meal_detail_footer.dart';
+import 'package:rest/widgets/meal_detail_image.dart';
 
 class WatchDetails extends StatefulWidget {
-  final Product watch;
+  final Product meal;
   final String tag;
 
-  WatchDetails({this.watch, this.tag});
+  WatchDetails({this.meal, this.tag});
 
   @override
   _WatchDetailsState createState() => _WatchDetailsState();
@@ -54,7 +54,7 @@ class _WatchDetailsState extends State<WatchDetails> {
                           height: 30.0,
                         ),
                         WatchDetailImage(
-                          image: this.widget.watch.image,
+                          image: this.widget.meal.image,
                           tag: this.widget.tag,
                         ),
                         Container(
@@ -67,7 +67,7 @@ class _WatchDetailsState extends State<WatchDetails> {
                                 text: TextSpan(
                                   children: [
                                     TextSpan(
-                                      text: this.widget.watch.brand,
+                                      text: this.widget.meal.name,
                                       style: TextStyle(
                                         height: 2.5,
                                         fontSize: 28.0,
@@ -75,16 +75,7 @@ class _WatchDetailsState extends State<WatchDetails> {
                                         color: Color.fromRGBO(34, 34, 34, 1),
                                       ),
                                     ),
-                                    TextSpan(
-                                      text: " " +
-                                          this.widget.watch.name +
-                                          " - " +
-                                          this.widget.watch.model,
-                                      style: TextStyle(
-                                        fontSize: 28.0,
-                                        color: Color.fromRGBO(34, 34, 34, 1),
-                                      ),
-                                    ),
+                        
                                   ],
                                 ),
                               ),
@@ -92,7 +83,7 @@ class _WatchDetailsState extends State<WatchDetails> {
                                 height: 5.0,
                               ),
                               Text(
-                                this.widget.watch.category,
+                                this.widget.meal.category,
                                 style: TextStyle(
                                   fontSize: 14.0,
                                   color: Colors.grey,
@@ -184,7 +175,7 @@ class _WatchDetailsState extends State<WatchDetails> {
                                       ),
                                     ),
                                     Text(
-                                      "\$${(this.widget.watch.price * this.cartItemCount).toStringAsFixed(2)}",
+                                      "\MYR  ${(this.widget.meal.price * this.cartItemCount).toStringAsFixed(2)}",
                                       style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 24.0,
@@ -195,7 +186,7 @@ class _WatchDetailsState extends State<WatchDetails> {
                                 ),
                               ),
                               Text(
-                                this.widget.watch.description,
+                                this.widget.meal.description,
                                 style: TextStyle(
                                   fontSize: 14.0,
                                   color: Colors.grey,
@@ -205,7 +196,7 @@ class _WatchDetailsState extends State<WatchDetails> {
                               SizedBox(
                                 height: 10.0,
                               ),
-                              WatchDetailFooter(),
+                              MealDetailFooter(),
                             ],
                           ),
                         )

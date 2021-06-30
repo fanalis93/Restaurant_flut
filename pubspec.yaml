@@ -23,6 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  firebase_core: ^1.3.0
   animate_do: ^2.0.0
   cupertino_icons: ^1.0.0
   flutter_icons: ^1.1.0
@@ -32,6 +33,8 @@ dependencies:
   google_fonts: ^2.1.0
   cloud_firestore: ^2.2.2
   firebase_auth: ^1.4.1
+    
+
 
 dev_dependencies:
   flutter_test:

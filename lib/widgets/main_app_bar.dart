@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+//import 'package:flutter_svg/svg.dart';
 
 class MainAppBar extends StatelessWidget {
   @override
@@ -8,19 +8,11 @@ class MainAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(
-          icon: SvgPicture.asset(
-            "assets/svg/menu.svg",
-            width: 12.0,
-            height: 12.0,
-          ),
+          icon: Icon(Icons.menu_outlined),
           onPressed: () {},
         ),
         IconButton(
-          icon: SvgPicture.asset(
-            "assets/svg/hamburger.svg",
-            width: 16.0,
-            height: 16.0,
-          ),
+          icon: Icon(Icons.shopping_basket_outlined),
           onPressed: () {},
         )
       ],

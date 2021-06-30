@@ -16,12 +16,13 @@ class WatchDetailImage extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16.0),
-            border: Border.all(
-              color: Colors.grey[300],
-            ),
-          ),
-          child: Image.asset(
-            this.image,
+            // border: Border.all(
+            //   color: Colors.grey[300],
+            // ),
+            image: DecorationImage(
+            alignment: Alignment(-.2, 0),
+            image: AssetImage(this.image),
+            fit: BoxFit.cover),
           ),
         ),
       ),

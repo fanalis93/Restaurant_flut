@@ -1,12 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rest/pages/home.dart';
 import 'package:rest/pages/store.dart';
-import 'package:rest/pages/watch_details.dart';
+import 'package:rest/pages/meal_details.dart';
+import 'package:rest/firestore.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(SomeError());
 }
 
 class MyApp extends StatelessWidget {
@@ -45,7 +47,7 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings) {
     case "/watch-details":
       return MaterialPageRoute(builder: (BuildContext context) {
         return WatchDetails(
-          watch: arguments["watch"],
+          meal: arguments["meal"],
           tag: arguments["tag"],
         );
       });
