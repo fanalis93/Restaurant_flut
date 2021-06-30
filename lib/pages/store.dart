@@ -13,6 +13,7 @@ class Store extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // drawer = NavDrawer(),
       backgroundColor: Color.fromRGBO(245, 245, 245, 1),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -36,7 +37,8 @@ class Store extends StatelessWidget {
                           height: 2.5,
                           fontSize: 28.0,
                           fontWeight: FontWeight.w600,
-                          color: Color.fromRGBO(34, 34, 34, 1),
+                          // color: Color.fromRGBO(34, 34, 34, 1),
+                          color: Color.fromRGBO(143, 148, 251, 1)
                         ),
                       ),
                     ],
@@ -80,7 +82,7 @@ class Store extends StatelessWidget {
                             padding: EdgeInsets.all(15.0),
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(8.0),
+                              borderRadius: BorderRadius.circular(10.0),
                               image: DecorationImage(
                                   image: NetworkImage(menu[index].image),
                                   fit: BoxFit.cover),
@@ -96,7 +98,7 @@ class Store extends StatelessWidget {
                                     fontSize: 15.0,
                                     color: Colors.white,
                                     background: Paint()
-                                      ..color = Colors.black87
+                                      ..color = Color.fromRGBO(143, 148, 251, 1)
                                       ..strokeWidth = 18.5
                                       ..style = PaintingStyle.stroke,
                                   ),

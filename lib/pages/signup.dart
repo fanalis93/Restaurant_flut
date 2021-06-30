@@ -4,14 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rest/constants.dart';
 import 'package:rest/pages/Animation/FadeAnimation.dart';
+import 'package:rest/pages/login.dart';
 import 'package:rest/pages/store.dart';
 
-class Home extends StatefulWidget {
+class Signup extends StatefulWidget {
 
   @override
-  _HomeState createState() => _HomeState();
+  _SignupState createState() => _SignupState();
 }
-class _HomeState extends State<Home> {
+class _SignupState extends State<Signup> {
   String _email, _password;
   final auth = FirebaseAuth.instance;
 
@@ -27,9 +28,10 @@ class _HomeState extends State<Home> {
 	              height: 400,
 	              decoration: BoxDecoration(
 	                image: DecorationImage(
-	                  image: AssetImage('assets/images/login.jpg'),
-	                  fit: BoxFit.fill
-	                )
+	                  image: AssetImage('assets/images/Webp.net-resizeimage.jpg'),
+	                  fit: BoxFit.fill,
+	                ),
+                  borderRadius: BorderRadius.circular(50),
 	              ),
 	              
 	            ),
@@ -41,7 +43,7 @@ class _HomeState extends State<Home> {
 	                    child: FadeAnimation(1.6, Container(
 	                      margin: EdgeInsets.only(top: 10),
 	                      child: Center(
-	                        child: Text("Sign In", style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1), fontSize: 30, fontWeight: FontWeight.bold),),
+	                        child: Text("Create an Account", style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1), fontSize: 30, fontWeight: FontWeight.bold),),
 	                      ),
 	                    )),
 	                  ),
@@ -127,12 +129,7 @@ class _HomeState extends State<Home> {
                       children: [
                       RaisedButton(
                         color: Color.fromRGBO(143, 148, 251, 1),
-                        child: Text('SignIn'),
-                        onPressed: () => _signin(_email, _password)
-                        ),
-                      RaisedButton(
-                        color: Color.fromRGBO(143, 148, 251, 1),
-                        child: Text('SignUp'),
+                        child: Text('SignUp',style: TextStyle(color: Colors.white)),
                         onPressed: () => _signup(_email, _password),
                         ),
                     ],),
@@ -140,12 +137,12 @@ class _HomeState extends State<Home> {
 	                  // FadeAnimation(1.5, Text("Forgot Password?", style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),)),
 	                  GestureDetector(
                       onTap: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Store()));
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
                         },
                         onLongPress: (){
                           
                         }, 
-                        child: new Text("Go to Store", style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1))),
+                        child: new Text("Already have an account? Login", style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1))),
                         )
 	                ],
 	              ),

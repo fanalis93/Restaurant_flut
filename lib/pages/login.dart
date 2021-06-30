@@ -4,14 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rest/constants.dart';
 import 'package:rest/pages/Animation/FadeAnimation.dart';
+import 'package:rest/pages/signup.dart';
 import 'package:rest/pages/store.dart';
 
-class Home extends StatefulWidget {
+class Login extends StatefulWidget {
 
   @override
-  _HomeState createState() => _HomeState();
+  _LoginState createState() => _LoginState();
 }
-class _HomeState extends State<Home> {
+class _LoginState extends State<Login> {
   String _email, _password;
   final auth = FirebaseAuth.instance;
 
@@ -127,18 +128,25 @@ class _HomeState extends State<Home> {
                       children: [
                       RaisedButton(
                         color: Color.fromRGBO(143, 148, 251, 1),
-                        child: Text('SignIn'),
+                        child: Text('SignIn',style: TextStyle(color: Colors.white)),
                         onPressed: () => _signin(_email, _password)
                         ),
-                      RaisedButton(
-                        color: Color.fromRGBO(143, 148, 251, 1),
-                        child: Text('SignUp'),
-                        onPressed: () => _signup(_email, _password),
-                        ),
+                      
                     ],),
-	                  SizedBox(height: 40,),
+	                  SizedBox(height: 10,),
 	                  // FadeAnimation(1.5, Text("Forgot Password?", style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),)),
 	                  GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Signup()));
+                        },
+                        onLongPress: (){
+                          
+                        }, 
+                        child: new Text("Create a new account.", style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1))),
+                    ),
+	                  SizedBox(height: 10,),
+
+                    GestureDetector(
                       onTap: () {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Store()));
                         },
@@ -146,7 +154,7 @@ class _HomeState extends State<Home> {
                           
                         }, 
                         child: new Text("Go to Store", style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1))),
-                        )
+                    )
 	                ],
 	              ),
 	            )

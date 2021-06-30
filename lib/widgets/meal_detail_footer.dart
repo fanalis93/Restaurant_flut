@@ -9,7 +9,9 @@ class MealDetailFooter extends StatelessWidget {
       children: [
         Expanded(
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              
+            },
             child: Container(
               margin: EdgeInsets.only(right: 15.0),
               height: 60.0,
